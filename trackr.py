@@ -20,19 +20,22 @@ def setup():
 		print "Please answer some questions to help me setup. ;-)"
 		f = open(filename, "w")
 		
-		question = r"""
-		Are you running this from:
-			a) work?
-			b) home?
-			c) other?
+		question = "Where are you running this from:"
+		choices = """
+		a) work?
+		b) home?
+		c) other?
+		
 		"""
+		question += choices
+		
 		valid_responses = {
 			"a" : "work",
 			"b" : "home",
 			"c" : "other"
 		}
 		
-		resp = raw_input(question).lower()
+		resp = raw_input(question.strip()).lower()
 		location = {
 			"work" : "",
 			"home" : "",
@@ -64,34 +67,3 @@ if __name__ == "__main__":
 	f.close()
 	
 	print location
-
-#old code, which I may come back to one day (10/05/2011)
-"""
-		isWork = isWork()
-		location = "your work" if isWork else "your home"
-		resp = raw_input("I'm guessing that you're running from %s. Is this correct? (y/n)", % location).lower()
-		
-		#figure out if we're at work or home
-		if(resp.lower() == "y"):
-			isWork = True
-		else if(resp.lower() == "n"):
-			isWork = False
-		else:
-			print "Repeating the question..."
-			
-	else:
-		f = open(filename, "rw")
-		log = f.readlines()
-				
-	f.close()
-	
-def isWork():
-	weekdays = [str(day) for day in range(1, 6)]
-	work_hours = [str(hour) for hour in range(8, 18)]
-	#check if weekday && if beween 8AM - 5PM
-	now = datetime.datetime.now()
-	day = now.strftime("%w")
-	hour = now.strftime("%H")
-	isWork = (day in weekdays and hour in work_hours)
-	return isWork
-"""
