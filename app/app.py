@@ -21,15 +21,24 @@ def after_request(response):
 def index():
 	return "Hello"
 	
+@app.route("/user/<int:user_key>", methods = ["GET"])
+def list(user_key):
+	select_query = "select mac from tracks where userkey = %s" % user_key
+	mac = g.db.execute(select_query)
+	mac = mac.fetchone()
+	
+	return mac
+	
 @app.route("/update/<user_key>/<mac>", methods = ["GET", "POST"])
 def update(user_key, mac):
 	insert_query = "insert into tracks(userkey, mac) where userkey = %s values (?)" % (user_key)
 	
 	# DEBUG
-	print insert_query
+	#print insert_query
 	
 	g.db.execute(insert_query, [ mac ])
 	g.db.commit()
+	
 	return "Username- %s at MAC- %s" % (user_key, mac)
 	
 def get_db_connection():
