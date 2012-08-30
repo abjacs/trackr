@@ -1,13 +1,13 @@
 import os
 import datetime
 import pickle
-import inet
+from inet import Inet
 
 
 def setup():
 	print "Gathering router MAC address"
 	
-	router_mac_address = inet.get_router_mac_addy()
+	router_mac_address = Inet.get_router_mac_addy()
 	
 	#persist to current user directory as hidden file
 	home = os.getenv("HOME")
