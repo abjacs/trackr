@@ -1,0 +1,15 @@
+=============
+   trackr
+=============
+
+We assume a router MAC corresponds to a location which we roughly categorize as home, work, other
+
+if(new router mac)
+	query user to determine work, home, etc.
+
+periodically, on 10min interval, query router mac to determine if we're still at same "location"
+
+Also-
+	handle computer idle time
+	handle computer resume from idle
+	(subtract these times from our logged times to be more accurate)
