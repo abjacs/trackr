@@ -2,6 +2,9 @@
 # encoding: utf-8
 
 import subprocess
+import sys
+if(sys.version_info)[1] <= 6:
+    sys.exit("python 2.7.1 or greater required")
 import re
 
 

@@ -4,7 +4,7 @@ from inet import Inet
 if __name__ == "__main__":
     
     # grab mac address
-    mac = Inet.get_route_mac_addy()
+    mac = Inet.get_router_mac_addy()
     if(mac == None):
         print "Unable to retrieve route MAC address"
     #else
